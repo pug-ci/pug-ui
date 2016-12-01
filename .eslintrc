@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "airbnb",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "globals": {
+    "document": true
+  },
+  "rules": {
+    "max-len": ["error", 120],
+    "no-multi-spaces": ["error", { "exceptions": { "ImportDeclaration": true } }],
+    "react/forbid-prop-types": 0
+  }
+}
