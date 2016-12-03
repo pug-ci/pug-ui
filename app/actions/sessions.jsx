@@ -21,6 +21,14 @@ const Actions = {
         dispatch(push('/sign_in'));
       });
     },
+
+  signOut: () =>
+    (dispatch) => {
+      localStorage.removeItem('authToken');
+      dispatch({ type: Constants.USER_SIGNED_OUT });
+      dispatch(push('/sign_in'));
+      dispatch({ type: Constants.REPOSITORIES_RESET });
+    },
 };
 
 export default Actions;

@@ -1,5 +1,6 @@
 import React        from 'react';
 import { connect }  from 'react-redux';
+import Header       from '../layouts/header';
 
 class AuthenticatedContainer extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class AuthenticatedContainer extends React.Component {
 
     return (
       <div id="authentication-container" className="application-container">
+        <Header />
         <div className="main-container">
           {this.props.children}
         </div>

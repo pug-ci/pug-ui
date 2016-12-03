@@ -9,6 +9,9 @@ export default function reducer(state = initialState, action = {}) {
     case Constants.REPOSITORIES_RECEIVED:
       return { ...state, integratedRepositories: action.integratedRepositories };
 
+    case Constants.REPOSITORIES_RESET:
+      return initialState;
+
     default:
       return state;
   }
