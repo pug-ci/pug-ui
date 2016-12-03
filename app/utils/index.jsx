@@ -7,7 +7,9 @@ const defaultHeaders = {
 };
 
 function buildHeaders() {
-  return defaultHeaders;
+  const authToken = localStorage.getItem('authToken');
+
+  return { ...defaultHeaders, Authorization: authToken };
 }
 
 export function checkStatus(response) {
