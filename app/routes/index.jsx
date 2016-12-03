@@ -1,9 +1,10 @@
-import { Route }              from 'react-router';
+import { Route, IndexRoute }  from 'react-router';
 import React                  from 'react';
 import MainLayout             from '../layouts/main';
 import AuthenticatedContainer from '../containers/authenticated';
-import SessionNew             from '../views/sessions/new';
 import Actions                from '../actions/sessions';
+import SessionNew             from '../views/sessions/new';
+import RepositoriesIndex      from '../views/repositories/index';
 
 export default function configRoutes(store) {
   const ensureAuthenticated = (nextState, replace, callback) => {
@@ -37,6 +38,7 @@ export default function configRoutes(store) {
       <Route path="/sign_in" component={SessionNew} onEnter={ensureUnauthenticated} />
 
       <Route path="/" component={AuthenticatedContainer} onEnter={ensureAuthenticated}>
+        <IndexRoute component={RepositoriesIndex} />
       </Route>
     </Route>
   );

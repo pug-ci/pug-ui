@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server -d --progress --colors --display-error-details",
     "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors --display-error-details",
-    "lint": "eslint app/**"
+    "lint": "eslint app/** --ext=.jsx"
   },
   "repository": {
     "type": "git",

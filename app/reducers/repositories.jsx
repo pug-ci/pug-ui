@@ -1,16 +1,13 @@
 import Constants from '../constants';
 
 const initialState = {
-  currentUser: null,
+  integratedRepositories: [],
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case Constants.CURRENT_USER:
-      return { ...state, currentUser: action.currentUser };
-
-    case Constants.USER_SIGNED_OUT:
-      return initialState;
+    case Constants.REPOSITORIES_RECEIVED:
+      return { ...state, integratedRepositories: action.integratedRepositories };
 
     default:
       return state;

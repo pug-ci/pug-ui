@@ -1,6 +1,8 @@
 const Constants = {
   CURRENT_USER: 'CURRENT_USER',
   USER_SIGNED_OUT: 'USER_SIGNED_OUT',
+
+  REPOSITORIES_RECEIVED: 'REPOSITORIES_RECEIVED',
 };
 
 export default Constants;
