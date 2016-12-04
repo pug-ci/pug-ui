@@ -1,6 +1,8 @@
-import React        from 'react';
-import { connect }  from 'react-redux';
-import Header       from '../layouts/header';
+import React                from 'react';
+import { connect }          from 'react-redux';
+import { Sidebar, Segment } from 'semantic-ui-react';
+
+import SidebarMenu  from '../layouts/sidebar_menu';
 
 class AuthenticatedContainer extends React.Component {
   render() {
@@ -9,12 +11,16 @@ class AuthenticatedContainer extends React.Component {
     if (!currentUser) return false;
 
     return (
-      <div id="authentication-container" className="application-container">
-        <Header />
-        <div className="main-container">
-          {this.props.children}
-        </div>
-      </div>
+      <Sidebar.Pushable>
+        <SidebarMenu />
+        <Sidebar.Pusher>
+          <Segment basic>
+            <div className="main-container">
+              {this.props.children}
+            </div>
+          </Segment>
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     );
   }
 }
