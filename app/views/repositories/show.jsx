@@ -30,7 +30,7 @@ class RepositoriesShow extends React.Component {
     }
 
     return (
-      <BuildsTable dispatch={this.props.dispatch} builds={builds} />
+      <BuildsTable dispatch={this.props.dispatch} repositoryId={this.props.currentRepository.id} builds={builds} />
     );
   }
 
