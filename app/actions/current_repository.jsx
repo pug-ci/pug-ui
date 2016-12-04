@@ -12,6 +12,17 @@ const Actions = {
         });
       });
     },
+
+  fetchBuilds: repositoryId =>
+    (dispatch) => {
+      httpGet(`//localhost:3000/api/v1/repositories/${repositoryId}/builds`)
+      .then((data) => {
+        dispatch({
+          type: Constants.CURRENT_REPOSITORY_BUILDS_RECEIVED,
+          builds: data,
+        });
+      });
+    },
 };
 
 export default Actions;
