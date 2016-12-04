@@ -4,6 +4,7 @@ import { Segment, Header, Icon }  from 'semantic-ui-react';
 
 import { setDocumentTitle } from '../../utils';
 import Actions              from '../../actions/current_build';
+import BuildDetails         from '../../components/builds/details';
 
 class BuildsShow extends React.Component {
   componentDidMount() {
@@ -14,6 +15,8 @@ class BuildsShow extends React.Component {
   }
 
   render() {
+    const { currentBuild } = this.props;
+
     return (
       <Segment basic className="view-container builds show">
         <Header as="h2">
@@ -25,7 +28,7 @@ class BuildsShow extends React.Component {
             </Header.Subheader>
           </Header.Content>
         </Header>
-        {this.props.currentBuild.status}
+        <BuildDetails currentBuild={currentBuild} />
       </Segment>
     );
   }

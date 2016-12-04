@@ -73,3 +73,20 @@ export function renderErrorsFor(errors, ref) {
     return null;
   });
 }
+
+export function buildColor(status) {
+  switch (status) {
+    case 'pending':
+      return 'blue';
+    case 'running':
+      return 'yellow';
+    case 'passed':
+      return 'green';
+    case 'failed':
+      return 'red';
+    case 'cancelled':
+      return 'grey';
+    default:
+      return 'black';
+  }
+}

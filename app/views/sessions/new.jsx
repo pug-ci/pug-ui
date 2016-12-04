@@ -28,7 +28,7 @@ class SessionsNew extends React.Component {
         <div className="ui middle aligned center aligned grid">
           <div className="column">
             <h2 className="ui teal image header">
-              <Image src="img/logo.png" size="medium" centered />
+              <Image src="/img/logo.png" size="medium" centered />
             </h2>
             <h1>Pug Continuous Integration</h1>
             <div className="sub header">
