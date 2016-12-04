@@ -1,60 +1,71 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
+import { Button, Segment, Header, Icon }           from 'semantic-ui-react';
+
 import { setDocumentTitle } from '../../utils';
-import RepositoryCard       from '../../components/repositories/card';
+import RemoteRepositoriesTable from '../../components/repositories/remote_table';
 import Actions              from '../../actions/repositories';
 
 class RepositoriesIndex extends React.Component {
   constructor() {
     super();
-    this.renderRepositories = this.renderRepositories.bind(this);
-    this.renderConnectedRepositories = this.renderConnectedRepositories.bind(this);
+    this.handleSyncAccount = this.handleSyncAccount.bind(this);
+    this.renderRemoteRepositories = this.renderRemoteRepositories.bind(this);
   }
 
   componentDidMount() {
     setDocumentTitle('Repositories');
-    this.props.dispatch(Actions.fetchRepositories());
   }
 
-  renderRepositories(repositories) {
-    return repositories.map(repository =>
-      <RepositoryCard key={repository.id} dispatch={this.props.dispatch} {...repository} />,
-    );
+  handleSyncAccount() {
+    this.props.dispatch(Actions.fetchRemoteRepositories());
   }
 
-  renderConnectedRepositories() {
-    const { connectedRepositories } = this.props;
+  renderRemoteRepositories() {
+    const { remoteRepositories } = this.props;
 
-    if (connectedRepositories.length === 0) return false;
+    if (remoteRepositories.length === 0) {
+      return (
+        <h2>No remote repositories. Try to synchronize your account.</h2>
+      );
+    }
 
     return (
-      <section>
-        <header className="view-header">
-          <h3>Connected repositories</h3>
-        </header>
-        <div className="repositories-wrapper">
-          {this.renderRepositories(connectedRepositories)}
-        </div>
-      </section>
+      <RemoteRepositoriesTable dispatch={this.props.dispatch} remoteRepositories={remoteRepositories} />
     );
   }
 
   render() {
     return (
-      <div className="view-container repositories index">
-        {this.renderConnectedRepositories()}
-      </div>
+      <Segment basic className="view-container repositories index">
+        <Header as="h2">
+          <Icon name="settings" />
+          <Header.Content>
+            { this.props.currentUser.name }
+            <Header.Subheader>
+              Connect your repositories
+            </Header.Subheader>
+          </Header.Content>
+        </Header>
+        <Button
+          content="Sync account" icon="refresh" labelPosition="left" color="blue" onClick={this.handleSyncAccount}
+        />
+
+        {this.renderRemoteRepositories()}
+      </Segment>
     );
   }
 }
 
 RepositoriesIndex.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  connectedRepositories: React.PropTypes.array.isRequired,
+  remoteRepositories: React.PropTypes.array.isRequired,
+  currentUser: React.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  connectedRepositories: state.repositories.connectedRepositories,
+  remoteRepositories: state.repositories.remoteRepositories,
+  currentUser: state.session.currentUser,
 });
 
 export default connect(mapStateToProps)(RepositoriesIndex);

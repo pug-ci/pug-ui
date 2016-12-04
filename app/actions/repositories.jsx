@@ -12,6 +12,17 @@ const Actions = {
         });
       });
     },
+
+  fetchRemoteRepositories: () =>
+    (dispatch) => {
+      httpGet('//localhost:3000/api/v1/repositories/remote')
+      .then((data) => {
+        dispatch({
+          type: Constants.REPOSITORIES_REMOTE_RECEIVED,
+          remoteRepositories: data,
+        });
+      });
+    },
 };
 
 export default Actions;

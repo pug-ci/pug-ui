@@ -54,7 +54,7 @@ class SidebarMenu extends React.Component {
 
   render() {
     return (
-      <Sidebar as={Menu} animation="push" width="wide" visible icon="labeled" vertical inverted>
+      <Sidebar as={Menu} animation="push" size="massive" width="wide" visible icon="labeled" vertical inverted>
         <Menu.Item name="logo" onClick={() => this.props.dispatch(push('/'))}>
           <Image src="/img/logo.png" size="small" centered />
         </Menu.Item>
@@ -64,7 +64,7 @@ class SidebarMenu extends React.Component {
         {this.renderConnectedRepositories()}
         <Menu.Item onClick={this.handleSignOutClick} name="signOut">
           <Icon name="sign out" />
-          SignOut
+          Sign out
         </Menu.Item>
       </Sidebar>
     );
