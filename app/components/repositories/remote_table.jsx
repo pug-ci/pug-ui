@@ -1,19 +1,33 @@
 import React        from 'react';
 import { Checkbox, Table } from 'semantic-ui-react';
 
+import Actions  from '../../actions/repositories';
+
 export default class RemoteRepositoriesTable extends React.Component {
   constructor() {
     super();
+    this.handleToggleChange = this.handleToggleChange.bind(this);
     this.renderRepository = this.renderRepository.bind(this);
     this.renderRepositories = this.renderRepositories.bind(this);
   }
 
+  handleToggleChange(repository) {
+    const { dispatch } = this.props;
+
+    const data = {
+      github_id: repository.github_id,
+      name: repository.name,
+      url: repository.url,
+    };
+
+    dispatch(Actions.createRepository(data));
+  }
 
   renderRepository(repository) {
     return (
-      <Table.Row>
+      <Table.Row key={repository.github_id}>
         <Table.Cell>
-          <Checkbox toggle />
+          <Checkbox toggle defaultChecked={repository.connected} onChange={() => this.handleToggleChange(repository)} />
         </Table.Cell>
         <Table.Cell>{repository.owner}</Table.Cell>
         <Table.Cell>{repository.name}</Table.Cell>
@@ -49,5 +63,6 @@ export default class RemoteRepositoriesTable extends React.Component {
 }
 
 RemoteRepositoriesTable.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
   remoteRepositories: React.PropTypes.array.isRequired,
 };

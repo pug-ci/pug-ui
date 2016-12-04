@@ -16,6 +16,12 @@ export default function reducer(state = initialState, action = {}) {
     case Constants.REPOSITORIES_RESET:
       return initialState;
 
+    case Constants.REPOSITORIES_NEW_REPOSITORY_CREATED: {
+      const { connectedRepositories } = state;
+
+      return { ...state, connectedRepositories: [action.repository].concat(connectedRepositories) };
+    }
+
     default:
       return state;
   }

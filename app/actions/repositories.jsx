@@ -1,5 +1,5 @@
-import Constants    from '../constants';
-import { httpGet }  from '../utils';
+import Constants              from '../constants';
+import { httpGet, httpPost }  from '../utils';
 
 const Actions = {
   fetchRepositories: () =>
@@ -20,6 +20,17 @@ const Actions = {
         dispatch({
           type: Constants.REPOSITORIES_REMOTE_RECEIVED,
           remoteRepositories: data,
+        });
+      });
+    },
+
+  createRepository: repository =>
+    (dispatch) => {
+      httpPost('//localhost:3000/api/v1/repositories', { repository })
+      .then((data) => {
+        dispatch({
+          type: Constants.REPOSITORIES_NEW_REPOSITORY_CREATED,
+          repository: data,
         });
       });
     },
