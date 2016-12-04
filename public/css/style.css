@@ -5,3 +5,25 @@ html {
 body {
   margin: 0;
 }
+
+.main-container {
+  width: calc(100% - 350px);
+}
+
+.view-container.sessions .sub.header {
+  text-align: center;
+  color: #666;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 20px;
+}
+
+.view-container.sessions > .footer {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.2;
+}
