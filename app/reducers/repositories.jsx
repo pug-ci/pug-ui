@@ -1,13 +1,13 @@
 import Constants from '../constants';
 
 const initialState = {
-  integratedRepositories: [],
+  connectedRepositories: [],
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case Constants.REPOSITORIES_RECEIVED:
-      return { ...state, integratedRepositories: action.integratedRepositories };
+      return { ...state, connectedRepositories: action.connectedRepositories };
 
     case Constants.REPOSITORIES_RESET:
       return initialState;

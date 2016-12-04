@@ -12,7 +12,7 @@ class SidebarMenu extends React.Component {
     this.handleSignOutClick = this.handleSignOutClick.bind(this);
     this.handleRepositoryClick = this.handleRepositoryClick.bind(this);
     this.renderRepositories = this.renderRepositories.bind(this);
-    this.renderIntegratedRepositories = this.renderIntegratedRepositories.bind(this);
+    this.renderConnectedRepositories = this.renderConnectedRepositories.bind(this);
   }
 
   componentDidMount() {
@@ -37,16 +37,16 @@ class SidebarMenu extends React.Component {
     );
   }
 
-  renderIntegratedRepositories() {
-    const { integratedRepositories } = this.props;
+  renderConnectedRepositories() {
+    const { connectedRepositories } = this.props;
 
-    if (integratedRepositories.length === 0) return false;
+    if (connectedRepositories.length === 0) return false;
 
     return (
-      <Menu.Item name="repositories">
-        Integrated repositories
+      <Menu.Item name="connectedRepositories">
+        Connected repositories
         <Menu.Menu>
-          {this.renderRepositories(integratedRepositories)}
+          {this.renderRepositories(connectedRepositories)}
         </Menu.Menu>
       </Menu.Item>
     );
@@ -61,7 +61,7 @@ class SidebarMenu extends React.Component {
         <Menu.Item name="user">
           {this.props.currentUser.name}
         </Menu.Item>
-        {this.renderIntegratedRepositories()}
+        {this.renderConnectedRepositories()}
         <Menu.Item onClick={this.handleSignOutClick} name="signOut">
           <Icon name="sign out" />
           SignOut
@@ -74,12 +74,12 @@ class SidebarMenu extends React.Component {
 SidebarMenu.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   currentUser: React.PropTypes.object.isRequired,
-  integratedRepositories: React.PropTypes.array.isRequired,
+  connectedRepositories: React.PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  integratedRepositories: state.repositories.integratedRepositories,
+  connectedRepositories: state.repositories.connectedRepositories,
 });
 
 export default connect(mapStateToProps)(SidebarMenu);

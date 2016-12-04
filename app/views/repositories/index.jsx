@@ -8,7 +8,7 @@ class RepositoriesIndex extends React.Component {
   constructor() {
     super();
     this.renderRepositories = this.renderRepositories.bind(this);
-    this.renderIntegratedRepositories = this.renderIntegratedRepositories.bind(this);
+    this.renderConnectedRepositories = this.renderConnectedRepositories.bind(this);
   }
 
   componentDidMount() {
@@ -22,18 +22,18 @@ class RepositoriesIndex extends React.Component {
     );
   }
 
-  renderIntegratedRepositories() {
-    const { integratedRepositories } = this.props;
+  renderConnectedRepositories() {
+    const { connectedRepositories } = this.props;
 
-    if (integratedRepositories.length === 0) return false;
+    if (connectedRepositories.length === 0) return false;
 
     return (
       <section>
         <header className="view-header">
-          <h3>Integrated repositories</h3>
+          <h3>Connected repositories</h3>
         </header>
         <div className="repositories-wrapper">
-          {this.renderRepositories(integratedRepositories)}
+          {this.renderRepositories(connectedRepositories)}
         </div>
       </section>
     );
@@ -42,7 +42,7 @@ class RepositoriesIndex extends React.Component {
   render() {
     return (
       <div className="view-container repositories index">
-        {this.renderIntegratedRepositories()}
+        {this.renderConnectedRepositories()}
       </div>
     );
   }
@@ -50,11 +50,11 @@ class RepositoriesIndex extends React.Component {
 
 RepositoriesIndex.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  integratedRepositories: React.PropTypes.array.isRequired,
+  connectedRepositories: React.PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
-  integratedRepositories: state.repositories.integratedRepositories,
+  connectedRepositories: state.repositories.connectedRepositories,
 });
 
 export default connect(mapStateToProps)(RepositoriesIndex);

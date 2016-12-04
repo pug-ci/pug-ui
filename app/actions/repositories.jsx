@@ -8,7 +8,7 @@ const Actions = {
       .then((data) => {
         dispatch({
           type: Constants.REPOSITORIES_RECEIVED,
-          integratedRepositories: data,
+          connectedRepositories: data,
         });
       });
     },
