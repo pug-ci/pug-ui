@@ -1,13 +1,15 @@
-import React                from 'react';
-import { connect }          from 'react-redux';
+import React                      from 'react';
+import { connect }                from 'react-redux';
+import { Segment, Header, Icon }  from 'semantic-ui-react';
+
 import { setDocumentTitle } from '../../utils';
 import Actions              from '../../actions/current_repository';
+import BuildsTable          from '../../components/builds/table';
 
 class RepositoriesShow extends React.Component {
   constructor() {
     super();
     this.renderAllBuilds = this.renderAllBuilds.bind(this);
-    this.renderBuilds = this.renderBuilds.bind(this);
   }
 
   componentDidMount() {
@@ -18,21 +20,17 @@ class RepositoriesShow extends React.Component {
     dispatch(Actions.fetchBuilds(params.id));
   }
 
-  renderBuilds(builds) {
-    return builds.map(build =>
-      <li key={build.id}>{build.status}</li>,
-    );
-  }
-
   renderAllBuilds() {
     const { builds } = this.props.currentRepository;
 
-    if (builds.length === 0) return false;
+    if (builds.length === 0) {
+      return (
+        <h2>No builds yet.</h2>
+      );
+    }
 
     return (
-      <div className="builds-wrapper">
-        {this.renderBuilds(builds)}
-      </div>
+      <BuildsTable dispatch={this.props.dispatch} builds={builds} />
     );
   }
 
@@ -40,14 +38,18 @@ class RepositoriesShow extends React.Component {
     const { currentRepository } = this.props;
 
     return (
-      <div className="view-container repositories show">
-        <section>
-          <header className="view-header">
-            <h3>{currentRepository.name}</h3>
-          </header>
-          {this.renderAllBuilds()}
-        </section>
-      </div>
+      <Segment basic className="view-container repositories show">
+        <Header as="h2">
+          <Icon name="cubes" />
+          <Header.Content>
+            { currentRepository.name }
+            <Header.Subheader>
+              Builds
+            </Header.Subheader>
+          </Header.Content>
+        </Header>
+        {this.renderAllBuilds()}
+      </Segment>
     );
   }
 }
