@@ -5,6 +5,7 @@ import AuthenticatedContainer from '../containers/authenticated';
 import Actions                from '../actions/sessions';
 import SessionNew             from '../views/sessions/new';
 import RepositoriesIndex      from '../views/repositories/index';
+import RepositoriesShow       from '../views/repositories/show';
 
 export default function configRoutes(store) {
   const ensureAuthenticated = (nextState, replace, callback) => {
@@ -39,6 +40,8 @@ export default function configRoutes(store) {
 
       <Route path="/" component={AuthenticatedContainer} onEnter={ensureAuthenticated}>
         <IndexRoute component={RepositoriesIndex} />
+
+        <Route path="/repositories/:id" component={RepositoriesShow} />
       </Route>
     </Route>
   );
