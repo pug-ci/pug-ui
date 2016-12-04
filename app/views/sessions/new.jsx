@@ -1,8 +1,8 @@
-import React                from 'react';
-import { connect }          from 'react-redux';
-// import  { Link }             from 'react-router';
-import { setDocumentTitle } from '../../utils';
-import Actions              from '../../actions/sessions';
+import React                      from 'react';
+import { connect }                from 'react-redux';
+import { Button, Icon, Image }    from 'semantic-ui-react';
+import { setDocumentTitle }       from '../../utils';
+import Actions                    from '../../actions/sessions';
 
 class SessionsNew extends React.Component {
   constructor() {
@@ -25,9 +25,18 @@ class SessionsNew extends React.Component {
   render() {
     return (
       <div className="view-container sessions new">
-        <main>
-          <button onClick={this.handleLoginWithGithubClick}>Login with github</button>
-        </main>
+        <div className="ui middle aligned center aligned grid">
+          <div className="column">
+            <h2 className="ui teal image header">
+              <Image src="img/logo.png" size="medium" centered />
+            </h2>
+            <div className="ui stacked">
+              <Button basic size="big" onClick={this.handleLoginWithGithubClick}>
+                <Icon name="github" /> Login with github
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
