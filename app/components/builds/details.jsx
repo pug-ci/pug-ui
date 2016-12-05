@@ -1,6 +1,6 @@
-import React                            from 'react';
-import { Segment, Image, Table, Grid }  from 'semantic-ui-react';
-import { buildColor }                   from '../../utils';
+import React                                  from 'react';
+import { Segment, Image, Table, Grid, Label } from 'semantic-ui-react';
+import { buildColor }                         from '../../utils';
 
 export default class BuildDetails extends React.Component {
   constructor() {
@@ -23,9 +23,34 @@ export default class BuildDetails extends React.Component {
       <Table basic="very" celled collapsing>
         <Table.Body>
           <Table.Row>
+            <Table.Cell>Pipeline</Table.Cell>
+            <Table.Cell>#{currentBuild.id}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Status</Table.Cell>
+            <Table.Cell>
+              <Label color={buildColor(currentBuild.status)} basic>{currentBuild.status}</Label>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Committer</Table.Cell>
+            <Table.Cell>{currentBuild.committer_username}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Message</Table.Cell>
+            <Table.Cell>{currentBuild.commit_message}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Commit</Table.Cell>
+            <Table.Cell>
+              <a href={currentBuild.commit_url}>{currentBuild.commit_id}</a>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
             <Table.Cell>Status</Table.Cell>
             <Table.Cell>{currentBuild.status}</Table.Cell>
           </Table.Row>
+
           <Table.Row>
             <Table.Cell>Created at</Table.Cell>
             <Table.Cell>{currentBuild.created_at}</Table.Cell>

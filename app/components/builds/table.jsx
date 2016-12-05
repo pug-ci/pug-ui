@@ -18,10 +18,12 @@ export default class BuildsTable extends React.Component {
   renderBuild(build) {
     return (
       <Table.Row key={build.id} onClick={() => this.handleBuildClick(build)}>
-        <Table.Cell>{build.id}</Table.Cell>
+        <Table.Cell>#{build.id}</Table.Cell>
         <Table.Cell>
           <Label color={buildColor(build.status)} basic>{build.status}</Label>
         </Table.Cell>
+        <Table.Cell>{build.committer_username}</Table.Cell>
+        <Table.Cell>{build.commit_message}</Table.Cell>
         <Table.Cell>{build.created_at}</Table.Cell>
       </Table.Row>
     );
@@ -40,8 +42,10 @@ export default class BuildsTable extends React.Component {
       <Table selectable basic="very" className="builds">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Id</Table.HeaderCell>
+            <Table.HeaderCell>Pipeline</Table.HeaderCell>
             <Table.HeaderCell>Status</Table.HeaderCell>
+            <Table.HeaderCell>Committer</Table.HeaderCell>
+            <Table.HeaderCell>Commit message</Table.HeaderCell>
             <Table.HeaderCell>Created at</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
