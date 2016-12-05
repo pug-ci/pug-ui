@@ -1,6 +1,7 @@
-import React          from 'react';
-import { push }       from 'react-router-redux';
-import { Table }      from 'semantic-ui-react';
+import React            from 'react';
+import { push }         from 'react-router-redux';
+import { Table, Label } from 'semantic-ui-react';
+import { buildColor }   from '../../utils';
 
 export default class BuildsTable extends React.Component {
   constructor() {
@@ -18,7 +19,9 @@ export default class BuildsTable extends React.Component {
     return (
       <Table.Row key={build.id} onClick={() => this.handleBuildClick(build)}>
         <Table.Cell>{build.id}</Table.Cell>
-        <Table.Cell>{build.status}</Table.Cell>
+        <Table.Cell>
+          <Label color={buildColor(build.status)} basic>{build.status}</Label>
+        </Table.Cell>
         <Table.Cell>{build.created_at}</Table.Cell>
       </Table.Row>
     );
