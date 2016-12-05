@@ -32,7 +32,7 @@ class SidebarMenu extends React.Component {
   renderRepositories(repositories) {
     return repositories.map(repository =>
       <Menu.Item key={repository.id} onClick={() => this.handleRepositoryClick(repository.id)}>
-        {repository.name}
+        {repository.owner}/{repository.name}
       </Menu.Item>,
     );
   }

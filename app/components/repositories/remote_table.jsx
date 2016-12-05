@@ -18,6 +18,7 @@ export default class RemoteRepositoriesTable extends React.Component {
       github_id: repository.github_id,
       name: repository.name,
       url: repository.url,
+      owner: repository.owner,
     };
 
     dispatch(Actions.createRepository(data));

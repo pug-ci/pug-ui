@@ -42,7 +42,7 @@ class RepositoriesShow extends React.Component {
         <Header as="h2">
           <Icon name="cubes" />
           <Header.Content>
-            { currentRepository.name }
+            {currentRepository.owner}/{currentRepository.name}
             <Header.Subheader>
               Builds
             </Header.Subheader>
