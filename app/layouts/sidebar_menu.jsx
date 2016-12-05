@@ -44,6 +44,7 @@ class SidebarMenu extends React.Component {
 
     return (
       <Menu.Item name="connectedRepositories">
+        <Icon name="github" />
         Connected repositories
         <Menu.Menu>
           {this.renderRepositories(connectedRepositories)}

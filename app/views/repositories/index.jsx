@@ -39,7 +39,7 @@ class RepositoriesIndex extends React.Component {
     return (
       <Segment basic className="view-container repositories index">
         <Header as="h2">
-          <Icon name="settings" />
+          <Icon name="github" />
           <Header.Content>
             { this.props.currentUser.name }
             <Header.Subheader>
