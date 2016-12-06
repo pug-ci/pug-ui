@@ -63,6 +63,10 @@ class SidebarMenu extends React.Component {
           {this.props.currentUser.name}
         </Menu.Item>
         {this.renderConnectedRepositories()}
+        <Menu.Item onClick={() => this.props.dispatch(push('/'))} name="connectRepository">
+          <Icon name="add square" />
+          Connect repository
+        </Menu.Item>
         <Menu.Item onClick={this.handleSignOutClick} name="signOut">
           <Icon name="sign out" />
           Sign out
