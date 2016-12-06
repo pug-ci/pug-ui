@@ -3,6 +3,7 @@ import React                  from 'react';
 import MainLayout             from '../layouts/main';
 import AuthenticatedContainer from '../containers/authenticated';
 import Actions                from '../actions/sessions';
+import NotFound               from '../views/errors/not_found';
 import SessionNew             from '../views/sessions/new';
 import RepositoriesIndex      from '../views/repositories/index';
 import RepositoriesShow       from '../views/repositories/show';
@@ -45,6 +46,7 @@ export default function configRoutes(store) {
         <Route path="repositories/:id" component={RepositoriesShow} />
         <Route path="repositories/:id/builds/:id" component={BuildsShow} />
       </Route>
+      <Route path="*" component={NotFound} />
     </Route>
   );
 }
