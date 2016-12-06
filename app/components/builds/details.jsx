@@ -47,11 +47,6 @@ export default class BuildDetails extends React.Component {
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>Status</Table.Cell>
-            <Table.Cell>{currentBuild.status}</Table.Cell>
-          </Table.Row>
-
-          <Table.Row>
             <Table.Cell>Created at</Table.Cell>
             <Table.Cell>{currentBuild.created_at}</Table.Cell>
           </Table.Row>
