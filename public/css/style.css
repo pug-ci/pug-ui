@@ -28,6 +28,10 @@ body {
   line-height: 1.2;
 }
 
+.view-container.repositories.index h2.title {
+  display: inline-block;
+}
+
 table.builds {
   cursor: pointer;
 }

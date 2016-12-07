@@ -26,7 +26,7 @@ class RepositoriesIndex extends React.Component {
 
     if (remoteRepositories.length === 0) {
       return (
-        <h2>No remote repositories. Try to synchronize your account.</h2>
+        <Header as="h2" textAlign="center">No remote repositories. Try to synchronize your account.</Header>
       );
     }
 
@@ -38,7 +38,7 @@ class RepositoriesIndex extends React.Component {
   render() {
     return (
       <Segment basic className="view-container repositories index">
-        <Header as="h2">
+        <Header as="h2" className="title">
           <Icon name="github" />
           <Header.Content>
             { this.props.currentUser.name }
@@ -48,7 +48,8 @@ class RepositoriesIndex extends React.Component {
           </Header.Content>
         </Header>
         <Button
-          content="Sync account" icon="refresh" labelPosition="left" color="blue" onClick={this.handleSyncAccount}
+          content="Sync account" icon="refresh" labelPosition="left" color="blue" floated="right"
+          onClick={this.handleSyncAccount}
         />
 
         {this.renderRemoteRepositories()}
