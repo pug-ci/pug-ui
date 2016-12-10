@@ -16,7 +16,8 @@
     "import"
   ],
   "globals": {
-    "document": true
+    "document": true,
+    "API_URL": true
   },
   "rules": {
     "max-len": ["error", 120],

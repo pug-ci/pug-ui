@@ -4,7 +4,7 @@ import { httpGet }  from '../utils';
 const Actions = {
   fetchBuild: (repositoryId, buildId) =>
     (dispatch) => {
-      httpGet(`//localhost:3000/api/v1/repositories/${repositoryId}/builds/${buildId}`)
+      httpGet(`${API_URL}/api/v1/repositories/${repositoryId}/builds/${buildId}`)
       .then((data) => {
         dispatch({
           type: Constants.CURRENT_BUILD_RECEIVED,

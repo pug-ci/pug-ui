@@ -4,7 +4,7 @@ import { httpGet, httpPost }  from '../utils';
 const Actions = {
   fetchRepositories: () =>
     (dispatch) => {
-      httpGet('//localhost:3000/api/v1/repositories')
+      httpGet(`${API_URL}/api/v1/repositories`)
       .then((data) => {
         dispatch({
           type: Constants.REPOSITORIES_RECEIVED,
@@ -15,7 +15,7 @@ const Actions = {
 
   fetchRemoteRepositories: () =>
     (dispatch) => {
-      httpGet('//localhost:3000/api/v1/repositories/remote')
+      httpGet(`${API_URL}/api/v1/repositories/remote`)
       .then((data) => {
         dispatch({
           type: Constants.REPOSITORIES_REMOTE_RECEIVED,
@@ -26,7 +26,7 @@ const Actions = {
 
   createRepository: repository =>
     (dispatch) => {
-      httpPost('//localhost:3000/api/v1/repositories', { repository })
+      httpPost(`${API_URL}/api/v1/repositories`, { repository })
       .then((data) => {
         dispatch({
           type: Constants.REPOSITORIES_NEW_REPOSITORY_CREATED,

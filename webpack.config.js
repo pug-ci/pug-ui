@@ -33,12 +33,20 @@ const config = {
       },
     }],
   },
+
   devServer: {
     contentBase: './public',
     colors: true,
     historyApiFallback: true,
     inline: true,
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify('//localhost:3000'),
+    }),
+  ],
+
 };
 
 if (process.env.NODE_ENV === 'production') {

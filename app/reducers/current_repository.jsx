@@ -10,7 +10,7 @@ export default function reducer(state = initialState, action = {}) {
       return { ...state, ...action.repository };
 
     case Constants.CURRENT_REPOSITORY_BUILDS_RECEIVED:
-      return { ...state, builds: action.builds }
+      return { ...state, builds: action.builds };
 
     default:
       return state;
