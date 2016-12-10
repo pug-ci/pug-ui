@@ -12,3 +12,10 @@ const target = document.getElementById('root');
 const node = <Root routerHistory={history} store={store} />;
 
 ReactDOM.render(node, target);
+
+history.listen((location) => {
+  const path = (/#!(\/.*)$/.exec(location.hash) || [])[1];
+  if (path) {
+    history.replace(path);
+  }
+});
