@@ -1,5 +1,5 @@
 import React                                  from 'react';
-import { Segment }                            from 'semantic-ui-react';
+import { Segment, Label }                     from 'semantic-ui-react';
 import JSONPretty                             from 'react-json-pretty';
 
 export default class BuildConfig extends React.Component {
@@ -9,6 +9,7 @@ export default class BuildConfig extends React.Component {
 
     return (
       <Segment inverted>
+        <Label attached="top right">Build config</Label>
         <JSONPretty id="json-pretty" json={JSON.parse(currentBuild.config)} />
       </Segment>
     );

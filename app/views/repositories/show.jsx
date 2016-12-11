@@ -20,6 +20,16 @@ class RepositoriesShow extends React.Component {
     dispatch(Actions.fetchBuilds(params.id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { dispatch, params } = this.props;
+    const nextId = nextProps.params.id;
+
+    if (nextId !== params.id) {
+      dispatch(Actions.fetchRepository(nextId));
+      dispatch(Actions.fetchBuilds(nextId));
+    }
+  }
+
   renderAllBuilds() {
     const { builds } = this.props.currentRepository;
 
