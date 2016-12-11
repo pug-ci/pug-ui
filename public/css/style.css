@@ -6,6 +6,14 @@ body {
   margin: 0;
 }
 
+.pushable {
+  background: #1B1C1D;
+}
+
+.pusher {
+  background: #fff !important;
+}
+
 .main-container {
   width: calc(100% - 350px);
 }
