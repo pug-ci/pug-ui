@@ -3,14 +3,14 @@ import { connect }          from 'react-redux';
 import { Button, Segment, Header, Icon }           from 'semantic-ui-react';
 
 import { setDocumentTitle } from '../../utils';
-import RemoteRepositoriesTable from '../../components/repositories/remote_table';
+import RepositoriesTable    from '../../components/repositories/table';
 import Actions              from '../../actions/repositories';
 
 class RepositoriesIndex extends React.Component {
   constructor() {
     super();
     this.handleSyncAccount = this.handleSyncAccount.bind(this);
-    this.renderRemoteRepositories = this.renderRemoteRepositories.bind(this);
+    this.rendeRepositories = this.renderRepositories.bind(this);
   }
 
   componentDidMount() {
@@ -18,20 +18,20 @@ class RepositoriesIndex extends React.Component {
   }
 
   handleSyncAccount() {
-    this.props.dispatch(Actions.fetchRemoteRepositories());
+    this.props.dispatch(Actions.fetchRepositories());
   }
 
-  renderRemoteRepositories() {
-    const { remoteRepositories } = this.props;
+  renderRepositories() {
+    const { repositories } = this.props;
 
-    if (remoteRepositories.length === 0) {
+    if (repositories.length === 0) {
       return (
-        <Header as="h2" textAlign="center">No remote repositories. Try to synchronize your account.</Header>
+        <Header as="h2" textAlign="center">No repositories. Try to synchronize your account.</Header>
       );
     }
 
     return (
-      <RemoteRepositoriesTable dispatch={this.props.dispatch} remoteRepositories={remoteRepositories} />
+      <RepositoriesTable dispatch={this.props.dispatch} repositories={repositories} />
     );
   }
 
@@ -52,7 +52,7 @@ class RepositoriesIndex extends React.Component {
           onClick={this.handleSyncAccount}
         />
 
-        {this.renderRemoteRepositories()}
+        {this.renderRepositories()}
       </Segment>
     );
   }
@@ -60,12 +60,12 @@ class RepositoriesIndex extends React.Component {
 
 RepositoriesIndex.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  remoteRepositories: React.PropTypes.array.isRequired,
+  repositories: React.PropTypes.array.isRequired,
   currentUser: React.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  remoteRepositories: state.repositories.remoteRepositories,
+  repositories: state.repositories.repositories,
   currentUser: state.session.currentUser,
 });
 

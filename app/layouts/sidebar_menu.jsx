@@ -38,16 +38,16 @@ class SidebarMenu extends React.Component {
   }
 
   renderConnectedRepositories() {
-    const { connectedRepositories } = this.props;
+    const { repositories } = this.props;
 
-    if (connectedRepositories.length === 0) return false;
+    if (repositories.length === 0) return false;
 
     return (
       <Menu.Item name="connectedRepositories">
         <Icon name="github" />
         Connected repositories
         <Menu.Menu>
-          {this.renderRepositories(connectedRepositories)}
+          {this.renderRepositories(repositories)}
         </Menu.Menu>
       </Menu.Item>
     );
@@ -79,12 +79,12 @@ class SidebarMenu extends React.Component {
 SidebarMenu.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   currentUser: React.PropTypes.object.isRequired,
-  connectedRepositories: React.PropTypes.array.isRequired,
+  repositories: React.PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  connectedRepositories: state.repositories.connectedRepositories,
+  repositories: state.repositories.repositories,
 });
 
 export default connect(mapStateToProps)(SidebarMenu);

@@ -8,18 +8,7 @@ const Actions = {
       .then((data) => {
         dispatch({
           type: Constants.REPOSITORIES_RECEIVED,
-          connectedRepositories: data,
-        });
-      });
-    },
-
-  fetchRemoteRepositories: () =>
-    (dispatch) => {
-      httpGet(`${API_URL}/api/v1/repositories/remote`)
-      .then((data) => {
-        dispatch({
-          type: Constants.REPOSITORIES_REMOTE_RECEIVED,
-          remoteRepositories: data,
+          repositories: data,
         });
       });
     },
