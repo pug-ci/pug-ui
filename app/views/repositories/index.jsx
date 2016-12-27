@@ -18,7 +18,7 @@ class RepositoriesIndex extends React.Component {
   }
 
   handleSyncAccount() {
-    this.props.dispatch(Actions.fetchRepositories());
+    this.props.dispatch(Actions.synchronizeRepositories());
   }
 
   renderRepositories() {

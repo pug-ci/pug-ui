@@ -40,14 +40,16 @@ class SidebarMenu extends React.Component {
   renderConnectedRepositories() {
     const { repositories } = this.props;
 
-    if (repositories.length === 0) return false;
+    const connectedRepositories = repositories.filter(element => element.connected);
+
+    if (connectedRepositories.length === 0) return false;
 
     return (
       <Menu.Item name="connectedRepositories">
         <Icon name="github" />
         Connected repositories
         <Menu.Menu>
-          {this.renderRepositories(repositories)}
+          {this.renderRepositories(connectedRepositories)}
         </Menu.Menu>
       </Menu.Item>
     );

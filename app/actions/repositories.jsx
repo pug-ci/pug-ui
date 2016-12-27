@@ -13,6 +13,17 @@ const Actions = {
       });
     },
 
+  synchronizeRepositories: () =>
+    (dispatch) => {
+      httpGet(`${API_URL}/api/v1/repositories/synchronize`)
+      .then((data) => {
+        dispatch({
+          type: Constants.REPOSITORIES_RECEIVED,
+          repositories: data,
+        });
+      });
+    },
+
   createRepository: repository =>
     (dispatch) => {
       httpPost(`${API_URL}/api/v1/repositories`, { repository })
