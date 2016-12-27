@@ -14,14 +14,11 @@ export default class RepositoriesTable extends React.Component {
   handleToggleChange(repository) {
     const { dispatch } = this.props;
 
-    const data = {
-      github_id: repository.github_id,
-      name: repository.name,
-      url: repository.url,
-      owner: repository.owner,
-    };
-
-    dispatch(Actions.createRepository(data));
+    if (repository.connected) {
+      dispatch(Actions.disconnectRepository(repository.id));
+    } else {
+      dispatch(Actions.connectRepository(repository.id));
+    }
   }
 
   renderRepository(repository) {

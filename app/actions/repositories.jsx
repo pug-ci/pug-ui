@@ -1,5 +1,5 @@
-import Constants              from '../constants';
-import { httpGet, httpPost }  from '../utils';
+import Constants            from '../constants';
+import { httpGet, httpPut } from '../utils';
 
 const Actions = {
   fetchRepositories: () =>
@@ -24,12 +24,23 @@ const Actions = {
       });
     },
 
-  createRepository: repository =>
+  connectRepository: repositoryId =>
     (dispatch) => {
-      httpPost(`${API_URL}/api/v1/repositories`, { repository })
+      httpPut(`${API_URL}/api/v1/repositories/${repositoryId}/connect`, {})
       .then((data) => {
         dispatch({
-          type: Constants.REPOSITORIES_NEW_REPOSITORY_CREATED,
+          type: Constants.REPOSITORIES_REPOSITORY_UPDATED,
+          repository: data,
+        });
+      });
+    },
+
+  disconnectRepository: repositoryId =>
+    (dispatch) => {
+      httpPut(`${API_URL}/api/v1/repositories/${repositoryId}/disconnect`, {})
+      .then((data) => {
+        dispatch({
+          type: Constants.REPOSITORIES_REPOSITORY_UPDATED,
           repository: data,
         });
       });

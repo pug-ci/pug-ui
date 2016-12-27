@@ -39,7 +39,6 @@ class SidebarMenu extends React.Component {
 
   renderConnectedRepositories() {
     const { repositories } = this.props;
-
     const connectedRepositories = repositories.filter(element => element.connected);
 
     if (connectedRepositories.length === 0) return false;

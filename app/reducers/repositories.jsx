@@ -12,10 +12,17 @@ export default function reducer(state = initialState, action = {}) {
     case Constants.REPOSITORIES_RESET:
       return initialState;
 
-    case Constants.REPOSITORIES_NEW_REPOSITORY_CREATED: {
+    case Constants.REPOSITORIES_REPOSITORY_UPDATED: {
       const { repositories } = state;
+      const repositoryIndex = repositories.findIndex(element => element.id === action.repository.id);
 
-      return { ...state, repositories: [action.repository].concat(repositories) };
+      const updatedRepositories = [
+        ...repositories.slice(0, repositoryIndex),
+        action.repository,
+        ...repositories.slice(repositoryIndex + 1),
+      ];
+
+      return { ...state, repositories: updatedRepositories };
     }
 
     default:
